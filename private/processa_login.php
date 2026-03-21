@@ -1,15 +1,18 @@
 <?php
-
 require_once 'includes/funcoes.php';
 start_session();
-
-// SEGURANÇA: só permite acesso via POST
+// --------------------------------------------------------------------
+// SEGURANÇA: Impede que o utilizador aceda diretamente a este script.
+// Este ficheiro deve ser acedido apenas através de submissão de formulário (POST).
+// Se for acedido diretamente (por URL), será redirecionado para o login.
+// --------------------------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    // Redireciona para o formulário de login (interface pública)
     header('Location: ../public/login.php');
+    // Encerra a execução do script imediatamente após o redirecionamento
     return;
 }
 
-// RECOLHA DE DADOS
 $username = isset($_POST['text_username']) ? $_POST['text_username'] : '';
 $password = isset($_POST['text_password']) ? $_POST['text_password'] : '';
 
@@ -66,33 +69,8 @@ if (!$result['status']) {
 }
 // Se o status for 1 (válido), o código continuará — aqui será futuramente criada a sessãodo utilizador e o redirecionamento para a área privada.
 
-// -------------------------------------------------------------------
-// LOGIN BEM-SUCEDIDO: Guardar o utilizador na sessão
-// --------------------------------------------------------------------
 // Guarda o nome de utilizador na sessão para identificar o utilizador autenticado
 $_SESSION['utilizador'] = $username;
-// Agora código da área privada
-
-?>
-
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/nav.php'; ?>
-
-<div class="container-fluid">
-    <div class="row">
-
-        <?php include 'includes/sidebar.php'; ?>
-
-
-        <!-- Conteúdo Principal -->
-        <main class="col-md-9 col-lg-10 p-4">
-            <section>
-                <h2>ISEP Ginásio</h2>
-                <p>Escolhe uma opção no menu lateral para continuar.</p>
-            </section>
-        </main>
-
-    </div>
-</div>
-
-<?php include 'includes/footer.php'; ?>
+// Redirecionar para a página principal privada
+header('Location: home.php');
+exit;
