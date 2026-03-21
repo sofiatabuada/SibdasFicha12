@@ -16,9 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 $username = isset($_POST['text_username']) ? $_POST['text_username'] : '';
 $password = isset($_POST['text_password']) ? $_POST['text_password'] : '';
 
-// MOSTRAR DADOS (teste)
-echo "Utilizador: " . $username . "<br>";
-echo "Password: " . $password;
+
 
 // --------------------------------------------------------------------
 // VALIDAÇÃO DOS DADOS
