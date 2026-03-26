@@ -5,10 +5,12 @@ start_session();
 $success_message = $_SESSION['success_message'] ?? '';
 unset($_SESSION['success_message']);
 ?>
+
 <?php
 include 'includes/header.php';
 include 'includes/nav.php';
 ?>
+
 <?php if (!empty($success_message)) : ?>
     <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
         <div id="toastSuccess" class="toast align-items-center text-bg-success border-0 show" role="alert">
