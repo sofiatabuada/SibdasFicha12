@@ -32,3 +32,24 @@ body {
         background-color: rgb(17, 255, 19);
     }
 }
+
+.tabela-clientes {
+    table-layout: fixed;
+    width: 100%;
+    font-size: 13px;
+    /* 👈 diminui texto */
+}
+
+.tabela-clientes th,
+.tabela-clientes td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tabela-clientes td {
+    white-space: nowrap;
+    /* 👈 tudo numa linha */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 👈 mete "..." se não couber */
+}
